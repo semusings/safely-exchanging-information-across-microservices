@@ -1,0 +1,18 @@
+= Factory Parent Example
+:repo: factory-parent-example
+:github: https://github.com/BhuwanUpadhyay/{repo}
+:githubmaster: {github}/tree/master
+:revnumber: {project-version}
+:docslink: {githubmaster}/src/main/asciidoc
+:toc: left
+:nofooter:
+
+(C) 2020 The original authors.
+
+NOTE: _Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically._
+
+include::intro.adoc[]
+
+== Quick Start
+
+include::quickstart.adoc[]

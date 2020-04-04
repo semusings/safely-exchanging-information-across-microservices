@@ -1,0 +1,2 @@
+
+Factory Parent Example is a base template project for maven.
