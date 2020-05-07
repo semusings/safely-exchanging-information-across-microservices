@@ -1,2 +1,7 @@
-# Factory Parent Example
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=io.github.bhuwanupadhyay%3Afactory-parent-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.github.bhuwanupadhyay%3Afactory-parent-example)
+# Safely Exchanging Information Across Microservices [![Java CI](https://github.com/BhuwanUpadhyay/12-safely-exchanging-information-across-microservices/workflows/Java%20CI/badge.svg)](https://github.com/BhuwanUpadhyay/12-safely-exchanging-information-across-microservices/actions)
+
+## On Blog
+- https://bhuwanupadhyay.github.io/blog/xxxx/
+
+## Last Updated On
+- `2020/05/03` - Initial

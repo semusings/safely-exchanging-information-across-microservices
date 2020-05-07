@@ -1,0 +1,21 @@
+{
+  "name": "factory-parent-example",
+  "version": "0.0.0-snapshot",
+  "description": "Factory Parent Example",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BhuwanUpadhyay/factory-parent-example.git"
+  },
+  "author": "Bhuwan Prasad Upadhyay",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/BhuwanUpadhyay/factory-parent-example/issues"
+  },
+  "homepage": "https://github.com/BhuwanUpadhyay/factory-parent-example#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.5"
+  }
+}

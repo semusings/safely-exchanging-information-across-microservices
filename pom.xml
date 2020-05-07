@@ -3,24 +3,28 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>factory-parent-example</artifactId>
+	<artifactId>12-safely-exchanging-information-across-microservices</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
 	<parent>
 		<groupId>io.github.bhuwanupadhyay</groupId>
 		<artifactId>factory-parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<scm>
-		<url>https://github.com/BhuwanUpadhyay/factory-parent-example</url>
-		<connection>scm:git:git://github.com/BhuwanUpadhyay/factory-parent-example.git
+		<url>https://github.com/BhuwanUpadhyay/12-safely-exchanging-information-across-microservices</url>
+		<connection>scm:git:git://github.com/BhuwanUpadhyay/12-safely-exchanging-information-across-microservices.git
 		</connection>
 		<developerConnection>
-			scm:git:ssh://git@github.com/BhuwanUpadhyay/factory-parent-example.git
+			scm:git:ssh://git@github.com/BhuwanUpadhyay/12-safely-exchanging-information-across-microservices.git
 		</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+
+	<name>Safely Exchanging Information Across Microservices</name>
+	<description>Demo Project to Safely Exchanging Information Across Microservices.</description>
+	<url>https://github.com/BhuwanUpadhyay/factory-parent-example</url>
 
 	<properties>
 		<java.version>14</java.version>
