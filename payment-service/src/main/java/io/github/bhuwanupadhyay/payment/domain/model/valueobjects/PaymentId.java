@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PaymentId {
 
-  @Column(name = "payment_id")
+  @Column(name = "PAYMENT_ID")
   private String paymentId;
 
   public PaymentId(String paymentId) {

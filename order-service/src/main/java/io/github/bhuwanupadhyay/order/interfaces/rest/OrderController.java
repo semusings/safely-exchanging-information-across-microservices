@@ -18,16 +18,16 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class OrderController {
 
-	private final CreateOrderCommandService createOrderCommandService;
+  private final CreateOrderCommandService createOrderCommandService;
 
-	@PostMapping
-	public ResponseEntity<Mono<OrderResource>> createOrder(CreateOrderRequest request,
-														   ServerWebExchange exchange) {
-		OrderId orderId = createOrderCommandService.createOrder(CreateOrderCommandDTOAssembler.toCommandFromDTO(request));
-		final OrderResource resource = new OrderResource();
-		resource.setOrderId(orderId.getOrderId());
-		return ResponseEntity.ok().body(Mono.just(resource));
-	}
-
-
+  @PostMapping
+  public ResponseEntity<Mono<OrderResource>> createOrder(
+      CreateOrderRequest request, ServerWebExchange exchange) {
+    OrderId orderId =
+        createOrderCommandService.createOrder(
+            CreateOrderCommandDTOAssembler.toCommandFromDTO(request));
+    final OrderResource resource = new OrderResource();
+    resource.setOrderId(orderId.getOrderId());
+    return ResponseEntity.ok().body(Mono.just(resource));
+  }
 }

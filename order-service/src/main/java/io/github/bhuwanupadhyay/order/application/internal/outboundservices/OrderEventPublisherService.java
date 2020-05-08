@@ -1,5 +1,6 @@
 package io.github.bhuwanupadhyay.order.application.internal.outboundservices;
 
+import io.github.bhuwanupadhyay.order.domain.events.PaymentRequestedEvent;
 import io.github.bhuwanupadhyay.order.infrastructure.brokers.rabbitmq.OrderEventSource;
 import io.github.bhuwanupadhyay.schemas.PaymentRequested;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +16,15 @@ public class OrderEventPublisherService {
   private final OrderEventSource orderEventSource;
 
   @TransactionalEventListener // Attach it to the transaction of the repository operation
-  public void handlePaymentReceived(PaymentRequested paymentRequested) {
+  public void handlePaymentReceived(PaymentRequestedEvent paymentRequestedEvent) {
     orderEventSource
         .requestPayment()
-        .send(MessageBuilder.withPayload(paymentRequested).build()); // Publish the event
+        .send(
+            MessageBuilder.withPayload(
+                    PaymentRequested.newBuilder()
+                        .setOrderId(paymentRequestedEvent.getOrderId().getOrderId())
+                        .setTotalAmount(paymentRequestedEvent.getOrderAmount().asString())
+                        .build())
+                .build()); // Publish the event
   }
 }

@@ -1,22 +1,23 @@
-package io.github.bhuwanupadhyay.payment.domain.model.valueobjects;
+package io.github.bhuwanupadhyay.order.domain.model.valueobjects;
 
-import java.math.BigDecimal;
-import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class OrderAmount {
 
-  @Column(name = "order_amount")
+  @Column(name = "ORDER_AMOUNT")
   private BigDecimal amount;
 
-  @Column(name = "order_amount_currency")
+  @Column(name = "ORDER_AMOUNT_CURR")
   private String currency;
 
   public OrderAmount(BigDecimal amount, String currency) {
@@ -35,5 +36,9 @@ public class OrderAmount {
   @Override
   public int hashCode() {
     return Objects.hash(amount, currency);
+  }
+
+  public String asString() {
+    return this.currency + " " + this.amount.toPlainString();
   }
 }

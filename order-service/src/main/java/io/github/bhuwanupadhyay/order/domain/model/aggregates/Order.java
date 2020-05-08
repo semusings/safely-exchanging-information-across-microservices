@@ -1,6 +1,6 @@
 package io.github.bhuwanupadhyay.order.domain.model.aggregates;
 
-import io.github.bhuwanupadhyay.order.domain.model.valueobjects.OrderId;
+import io.github.bhuwanupadhyay.order.domain.model.valueobjects.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,27 +13,38 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends AbstractAggregateRoot<Order> {
-	@Id // Identifier Annotation provided by JPA
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Rely on a RDBMS generated sequence
-	private Long id;
+  @Id // Identifier Annotation provided by JPA
+  @GeneratedValue(strategy = GenerationType.IDENTITY) // Rely on a RDBMS generated sequence
+  private Long id;
 
-	@Embedded
-	private OrderId orderId; // Globally unique identifier of the Order Root Aggregate (Order Id)
+  // Globally unique identifier of the Order Root Aggregate (Order Id)
+  @Embedded private OrderId orderId;
 
-	public Order(OrderId orderId) {
-		this.orderId = orderId;
-	}
+  @Embedded private OrderAmount orderAmount;
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Order payment = (Order) o;
-		return Objects.equals(id, payment.id) && Objects.equals(orderId, payment.orderId);
-	}
+  @Embedded private ItemId itemId;
+  @Embedded private Quantity quantity;
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, orderId);
-	}
+  public Order(OrderId orderId, ItemId itemId, Quantity quantity) {
+    this.orderId = orderId;
+    this.itemId = itemId;
+    this.quantity = quantity;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Order order = (Order) o;
+    return Objects.equals(id, order.id) && Objects.equals(orderId, order.orderId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, orderId);
+  }
+
+  public void evaluatePrice(ItemPrice itemPrice) {
+
+  }
 }

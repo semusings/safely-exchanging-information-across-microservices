@@ -1,13 +1,14 @@
 package io.github.bhuwanupadhyay.payment.domain.model.aggregates;
 
-import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.OrderAmount;
+import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.ReceivedAmount;
 import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.PaymentId;
-import java.util.Objects;
-import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.AbstractAggregateRoot;
+
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -18,11 +19,10 @@ public class Payment extends AbstractAggregateRoot<Payment> {
   @GeneratedValue(strategy = GenerationType.IDENTITY) // Rely on a RDBMS generated sequence
   private Long id;
 
-  @Embedded
-  private PaymentId
-      paymentId; // Globally unique identifier of the Payment Root Aggregate (Payment Id)
+  // Globally unique identifier of the Payment Root Aggregate (Payment Id)
+  @Embedded private PaymentId paymentId;
 
-  @Embedded private OrderAmount orderAmount;
+  @Embedded private ReceivedAmount receivedAmount;
 
   public Payment(PaymentId paymentId) {
     this.paymentId = paymentId;
