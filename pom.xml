@@ -4,7 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>12-safely-exchanging-information-across-microservices</artifactId>
+	<packaging>pom</packaging>
 	<version>1.0.0-SNAPSHOT</version>
+	<modules>
+		<module>schema-registry</module>
+	</modules>
 
 	<parent>
 		<groupId>io.github.bhuwanupadhyay</groupId>
