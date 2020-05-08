@@ -1,5 +1,5 @@
 {
-  "name": "PaymentReceived",
+  "name": "PaymentReceivedEvent",
   "type": "record",
   "namespace": "io.github.bhuwanupadhyay.schemas",
   "fields": [
