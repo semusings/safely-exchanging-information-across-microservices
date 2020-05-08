@@ -1,0 +1,15 @@
+{
+  "name": "PaymentReceived",
+  "type": "record",
+  "namespace": "io.github.bhuwanupadhyay.schemas",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+        "name": "paymentId",
+        "type": "string"
+    }
+  ]
+}
