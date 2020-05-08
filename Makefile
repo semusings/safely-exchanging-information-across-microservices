@@ -27,27 +27,3 @@ full-build: ## Full build the project
 
 version: ## Get the current version
 	@scripts/before_ci.sh
-
-release: ## Perform release
-	@read -p "Sonatype Password: " passwd; \
-	CI_SECURE_ENV_VARS=true \
-	PULL_REQUEST=false \
-	SONATYPE_USER=developerbhuwan \
-	SONATYPE_PASSWORD=$$passwd \
-	./scripts/build.sh
-
-rollback: ## Rollback release
-	IS_ROLLBACK=true \
-	./scripts/build.sh
-
-##@ GPG Key
-
-gpg-generate: ## Generate new GPG key
-	gpg --full-generate-key
-gpg-export: ## Export GPG Key
-	cd ${HOME}/.gnupg && \
-	gpg --export-secret-keys -o secring.gpg
-gpg-publish: ## Publish GPG to keyserver
-	gpg -K
-	@read -p "Gpg Key Id: " keyId; \
-	gpg --send-keys --keyserver keyserver.ubuntu.com $${keyId}

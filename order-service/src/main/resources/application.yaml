@@ -12,6 +12,6 @@ spring:
           contentType: 'application/*+avro'
           group: orders
   datasource:
-    url: jdbc:postgresql://localhost:5433/payments
+    url: jdbc:postgresql://localhost:5432/orders
     username: user
     password: password

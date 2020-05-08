@@ -1,0 +1,76 @@
+version: "3.7"
+
+volumes:
+  orders_db_data: {}
+  payments_db_data: {}
+  schemas_db_data: {}
+
+networks:
+  backend:
+    external: false
+
+services:
+  # -------------------------------------------------
+  # Application Broker
+  # -------------------------------------------------
+  broker:
+    image: rabbitmq:3.7-alpine
+    ports:
+      - 5672:5672
+    networks:
+      - backend
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  # -------------------------------------------------
+  # Application Backend Databases
+  # -------------------------------------------------
+  orders_db:
+    image: bitnami/postgresql:12
+    ports:
+      - 5432:5432
+    volumes:
+      - orders_db_data:/bitnami/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=password
+      - POSTGRESQL_DATABASE=orders
+    networks:
+      - backend
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  payments_db:
+    image: bitnami/postgresql:12
+    ports:
+      - 5433:5432
+    volumes:
+      - payments_db_data:/bitnami/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=password
+      - POSTGRESQL_DATABASE=payments
+    networks:
+      - backend
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  schemas_db:
+    image: bitnami/postgresql:12
+    ports:
+      - 5434:5432
+    volumes:
+      - payments_db_data:/bitnami/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=password
+      - POSTGRESQL_DATABASE=schemas
+    networks:
+      - backend
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
