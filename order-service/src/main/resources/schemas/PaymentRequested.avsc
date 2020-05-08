@@ -1,7 +1,7 @@
 {
   "name": "PaymentRequested",
   "type": "record",
-  "namespace": "io.github.bhuwanupadhyay.schemas.v1",
+  "namespace": "io.github.bhuwanupadhyay.schemas",
   "fields": [
     {
       "name": "orderId",
