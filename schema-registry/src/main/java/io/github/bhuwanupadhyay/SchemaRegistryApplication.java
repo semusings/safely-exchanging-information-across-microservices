@@ -8,7 +8,7 @@ import org.springframework.cloud.schema.registry.EnableSchemaRegistryServer;
 @EnableSchemaRegistryServer
 public class SchemaRegistryApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SchemaRegistryApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SchemaRegistryApplication.class, args);
+  }
 }

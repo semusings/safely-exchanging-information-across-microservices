@@ -5,7 +5,6 @@ import org.springframework.messaging.MessageChannel;
 
 public interface PaymentEventSource {
 
-	@Output("createOrder")
-	MessageChannel createOrder();
-
+  @Output("createOrder")
+  MessageChannel createOrder();
 }

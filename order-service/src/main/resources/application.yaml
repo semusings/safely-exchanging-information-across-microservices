@@ -1,5 +1,8 @@
 spring:
   cloud:
+    schema:
+      avro:
+        dynamic-schema-generation-enabled: true
     schema-registry-client:
       cached: true
     stream:
@@ -7,10 +10,10 @@ spring:
         input: # your input sink channel name [SubscribableChannel]
           contentType: 'application/*+avro'
           destination: input
-          group: order-payment-microservices
+          group: order-service
         requestPayment: # your output sink channel name [MessageChannel]
           contentType: 'application/*+avro'
-          group: order-payment-microservices
+          group: order-service
   datasource:
     url: jdbc:postgresql://localhost:5432/orders
     username: user
