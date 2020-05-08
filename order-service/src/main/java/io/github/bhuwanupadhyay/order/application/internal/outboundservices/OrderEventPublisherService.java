@@ -12,12 +12,12 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @EnableBinding(OrderEventSource.class)
 @RequiredArgsConstructor
 public class OrderEventPublisherService {
-	private final OrderEventSource orderEventSource;
+  private final OrderEventSource orderEventSource;
 
-	@TransactionalEventListener // Attach it to the transaction of the repository operation
-	public void handlePaymentReceived(PaymentRequested paymentRequested) {
-		orderEventSource
-				.requestPayment()
-				.send(MessageBuilder.withPayload(paymentRequested).build()); // Publish the event
-	}
+  @TransactionalEventListener // Attach it to the transaction of the repository operation
+  public void handlePaymentReceived(PaymentRequested paymentRequested) {
+    orderEventSource
+        .requestPayment()
+        .send(MessageBuilder.withPayload(paymentRequested).build()); // Publish the event
+  }
 }

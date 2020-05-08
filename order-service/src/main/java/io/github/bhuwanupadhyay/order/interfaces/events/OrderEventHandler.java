@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 @EnableBinding(Sink.class) // Bind to the channel connection for the message
 public class OrderEventHandler {
 
-	@StreamListener(target = Sink.INPUT) // Listen to the stream of messages on the destination
-	public void receiveEvent(PaymentReceived paymentReceived) {
-	}
+  @StreamListener(target = Sink.INPUT) // Listen to the stream of messages on the destination
+  public void receiveEvent(PaymentReceived paymentReceived) {}
 }
