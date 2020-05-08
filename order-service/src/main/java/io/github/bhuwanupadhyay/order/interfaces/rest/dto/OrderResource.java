@@ -1,11 +1,11 @@
 package io.github.bhuwanupadhyay.order.interfaces.rest.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class OrderResource {
 
   private String orderId;
+  private String itemId;
+  private String status;
 }
