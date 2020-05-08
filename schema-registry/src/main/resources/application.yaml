@@ -1,5 +1,6 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5436/schemas
-    username: user
-    password: password
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5434/schemas
+#    username: user
+#    password: password
+#    driver-class-name: org.postgresql.Driver

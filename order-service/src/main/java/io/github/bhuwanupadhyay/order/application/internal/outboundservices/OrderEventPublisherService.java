@@ -14,9 +14,9 @@ public class OrderEventPublisherService {
 	private final OrderEventSource orderEventSource;
 
 	@TransactionalEventListener //Attach it to the transaction of the repository operation
-	public void handlePaymentReceived(Object paymentRequestedEvent) {
+	public void handlePaymentReceived(Object paymentRequested) {
 		orderEventSource.requestPayment().send(MessageBuilder.
-				withPayload(paymentRequestedEvent).build()); //Publish the event
+				withPayload(paymentRequested).build()); //Publish the event
 	}
 
 }

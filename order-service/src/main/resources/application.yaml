@@ -7,10 +7,10 @@ spring:
         input: # your input sink channel name [SubscribableChannel]
           contentType: 'application/*+avro'
           destination: input
-          group: orders
-        createOrder: # your output sink channel name [MessageChannel]
+          group: order-payment-microservices
+        requestPayment: # your output sink channel name [MessageChannel]
           contentType: 'application/*+avro'
-          group: orders
+          group: order-payment-microservices
   datasource:
     url: jdbc:postgresql://localhost:5432/orders
     username: user
