@@ -1,10 +1,5 @@
 spring:
   cloud:
-    schema:
-      avro:
-        dynamic-schema-generation-enabled: true
-    schema-registry-client:
-      cached: true
     stream:
       bindings:
         input: # your input sink channel name [SubscribableChannel]
