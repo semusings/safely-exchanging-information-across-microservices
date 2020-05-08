@@ -9,6 +9,7 @@
 	<modules>
 		<module>schema-registry</module>
 		<module>order-service</module>
+		<module>payment-service</module>
 	</modules>
 
 	<parent>
