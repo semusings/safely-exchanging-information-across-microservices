@@ -13,5 +13,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/orders
     username: user
     password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 server:
   port: 8080

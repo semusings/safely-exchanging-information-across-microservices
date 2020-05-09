@@ -14,22 +14,22 @@ import java.util.Objects;
 public class PaymentId {
 
   @Column(name = "PAYMENT_ID")
-  private String itemId;
+  private String paymentId;
 
-  public PaymentId(String itemId) {
-    this.itemId = itemId;
+  public PaymentId(String paymentId) {
+    this.paymentId = paymentId;
   }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		PaymentId paymentId = (PaymentId) o;
-		return Objects.equals(itemId, paymentId.itemId);
-	}
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentId paymentId1 = (PaymentId) o;
+    return Objects.equals(paymentId, paymentId1.paymentId);
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(itemId);
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(paymentId);
+  }
 }
