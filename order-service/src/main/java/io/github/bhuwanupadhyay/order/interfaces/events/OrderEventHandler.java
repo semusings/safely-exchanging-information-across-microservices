@@ -2,6 +2,7 @@ package io.github.bhuwanupadhyay.order.interfaces.events;
 
 import io.github.bhuwanupadhyay.order.application.internal.commandservices.NotifyPaymentCommandService;
 import io.github.bhuwanupadhyay.order.domain.commands.NotifyPaymentCommand;
+import io.github.bhuwanupadhyay.order.infrastructure.brokers.rabbitmq.OrderEventSource;
 import io.github.bhuwanupadhyay.schemas.PaymentReceived;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,12 +14,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@EnableBinding(Sink.class) // Bind to the channel connection for the message
+@EnableBinding(OrderEventSource.class) // Bind to the channel connection for the message
 public class OrderEventHandler {
 
   private final NotifyPaymentCommandService notifyPaymentCommandService;
 
-  @StreamListener(target = Sink.INPUT) // Listen to the stream of messages on the destination
+  @StreamListener(
+      target =
+          OrderEventSource.PAYMENT_RECEIVED) // Listen to the stream of messages on the destination
   public void receiveEvent(PaymentReceived paymentReceived) {
     LOG.info("Receive event [PaymentReceived].");
     LOG.debug("Event payload {}.", paymentReceived);

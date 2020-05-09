@@ -26,7 +26,7 @@ public class OrderEventPublisherService {
             .setTotalAmount(paymentRequestedEvent.getOrderAmount().asString())
             .build();
     orderEventSource
-        .requestPayment()
+        .paymentRequested()
         .send(MessageBuilder.withPayload(paymentRequested).build()); // Publish the event
     LOG.info("Successfully published the event [PaymentRequestedEvent].");
   }

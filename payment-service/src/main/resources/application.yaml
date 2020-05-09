@@ -4,13 +4,13 @@ spring:
       cached: true
     stream:
       bindings:
-        input: # your input sink channel name [SubscribableChannel]
+        paymentRequested: # your input sink channel name [SubscribableChannel]
           contentType: 'application/*+avro'
-          destination: input
-          group: order-payment-microservices
-        createOrder: # your output sink channel name [MessageChannel]
+          destination: requestPayment
+          group: oms
+        paymentReceived: # your output sink channel name [MessageChannel]
           contentType: 'application/*+avro'
-          group: order-payment-microservices
+          group: oms
   datasource:
     url: jdbc:postgresql://localhost:5433/payments
     username: user

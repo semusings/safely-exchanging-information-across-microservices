@@ -2,13 +2,13 @@ spring:
   cloud:
     stream:
       bindings:
-        input: # your input sink channel name [SubscribableChannel]
+        paymentRequested: # your output sink channel name [MessageChannel]
           contentType: 'application/*+avro'
-          destination: input
-          group: order-service
-        requestPayment: # your output sink channel name [MessageChannel]
+          group: oms
+        paymentReceived: # your input sink channel name [SubscribableChannel]
           contentType: 'application/*+avro'
-          group: order-service
+          destination: paymentReceived
+          group: oms
   datasource:
     url: jdbc:postgresql://localhost:5432/orders
     username: user

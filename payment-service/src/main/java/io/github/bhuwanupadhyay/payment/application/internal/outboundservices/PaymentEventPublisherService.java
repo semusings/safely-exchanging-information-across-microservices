@@ -26,7 +26,7 @@ public class PaymentEventPublisherService {
             .setPaymentId(paymentReceivedEvent.getPaymentId().getPaymentId())
             .build();
     paymentEventSource
-        .createOrder()
+        .paymentReceived()
         .send(MessageBuilder.withPayload(paymentReceived).build()); // Publish the event
     LOG.info("Successfully published the event [PaymentReceivedEvent].");
   }
