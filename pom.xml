@@ -34,7 +34,7 @@
 	<url>https://github.com/BhuwanUpadhyay/factory-parent-example</url>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>

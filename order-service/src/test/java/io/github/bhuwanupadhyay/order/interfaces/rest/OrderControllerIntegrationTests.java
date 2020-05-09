@@ -18,7 +18,7 @@ import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
 @Disabled
-class OrderControllerIntegrationTest {
+class OrderControllerIntegrationTests {
 
   @LocalServerPort private Integer port;
 
