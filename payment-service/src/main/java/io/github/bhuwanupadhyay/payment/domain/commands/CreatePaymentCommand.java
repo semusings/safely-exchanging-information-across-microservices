@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class CreatePaymentCommand {
 
-	private String orderId;
-	private String orderAmount;
-
+  private String orderId;
+  private String orderAmount;
 }

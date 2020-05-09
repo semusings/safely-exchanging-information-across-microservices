@@ -4,13 +4,12 @@ import io.github.bhuwanupadhyay.payment.domain.events.PaymentReceivedEvent;
 import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.OrderId;
 import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.PaymentId;
 import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.ReceivedAmount;
+import java.util.Objects;
+import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.AbstractAggregateRoot;
-
-import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "OMS_PAYMENT")
