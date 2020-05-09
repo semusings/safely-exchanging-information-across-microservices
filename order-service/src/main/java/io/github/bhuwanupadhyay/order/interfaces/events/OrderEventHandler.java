@@ -26,6 +26,6 @@ public class OrderEventHandler {
     notifyPaymentCommand.setOrderId(paymentReceived.getOrderId().toString());
     notifyPaymentCommand.setPaymentId(paymentReceived.getPaymentId().toString());
     notifyPaymentCommandService.notifyPayment(notifyPaymentCommand);
-    LOG.debug("Successfully processed event [PaymentReceived].");
+    LOG.info("Successfully processed event [PaymentReceived].");
   }
 }

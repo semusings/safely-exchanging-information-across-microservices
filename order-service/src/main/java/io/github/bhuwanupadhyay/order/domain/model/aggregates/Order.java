@@ -1,5 +1,6 @@
 package io.github.bhuwanupadhyay.order.domain.model.aggregates;
 
+import io.github.bhuwanupadhyay.order.domain.events.PaymentRequestedEvent;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -50,8 +51,8 @@ public class Order extends AbstractAggregateRoot<Order> {
   public void evaluatePrice(ItemPrice itemPrice) {
     final BigDecimal quantity = BigDecimal.valueOf(this.quantity.getQuantity());
     final BigDecimal amount = itemPrice.getItemPrice().multiply(quantity);
-
     this.orderAmount = new OrderAmount(amount, "USD");
+    this.registerEvent(new PaymentRequestedEvent(orderId, orderAmount));
   }
 
   public void notifyOrder(PaymentId paymentId) {
