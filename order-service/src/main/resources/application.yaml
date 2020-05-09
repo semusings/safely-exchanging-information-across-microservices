@@ -2,13 +2,16 @@ spring:
   cloud:
     stream:
       bindings:
-        paymentRequested: # your output sink channel name [MessageChannel]
+        paymentRequestedChannel: # [MessageChannel]
           contentType: 'application/*+avro'
-          group: oms
-        paymentReceived: # your input sink channel name [SubscribableChannel]
+          destination: payment-requests
+        paymentReceivedChannel: # [SubscribableChannel]
           contentType: 'application/*+avro'
-          destination: paymentReceived
-          group: oms
+      rabbit:
+        bindings:
+          paymentReceivedChannel:
+            consumer:
+              autoBindDlq: true # Enable Dead Letter Queue on [SubscribableChannel]
   datasource:
     url: jdbc:postgresql://localhost:5432/orders
     username: user

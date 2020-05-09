@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -19,9 +18,8 @@ public class OrderEventHandler {
 
   private final NotifyPaymentCommandService notifyPaymentCommandService;
 
-  @StreamListener(
-      target =
-          OrderEventSource.PAYMENT_RECEIVED) // Listen to the stream of messages on the destination
+  // Listen to the stream of messages on the destination
+  @StreamListener(target = OrderEventSource.PAYMENT_RECEIVED_CHANNEL)
   public void receiveEvent(PaymentReceived paymentReceived) {
     LOG.info("Receive event [PaymentReceived].");
     LOG.debug("Event payload {}.", paymentReceived);

@@ -12,7 +12,7 @@ services:
     image: rabbitmq:3.8.3-management-alpine
     ports:
       - 5672:5672
-      - 15672:15672
+      - 15672:15672 # URL: http://localhost:15672 , Username: guest , Password: guest
     networks:
       - backend
     deploy:
