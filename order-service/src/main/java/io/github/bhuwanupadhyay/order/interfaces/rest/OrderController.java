@@ -5,7 +5,7 @@ import io.github.bhuwanupadhyay.order.application.internal.queryservices.OrderQu
 import io.github.bhuwanupadhyay.order.interfaces.rest.dto.CreateOrderResource;
 import io.github.bhuwanupadhyay.order.interfaces.rest.dto.OrderIdResource;
 import io.github.bhuwanupadhyay.order.interfaces.rest.dto.OrderResource;
-import io.github.bhuwanupadhyay.order.interfaces.rest.transform.CreateOrderCommandDTOAssembler;
+import io.github.bhuwanupadhyay.order.interfaces.rest.transform.DTOAssembler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -30,14 +29,8 @@ public class OrderController {
     return createOrderResourceMono
         .map(
             request ->
-                createOrderCommandService.createOrder(
-                    CreateOrderCommandDTOAssembler.toCommandFromDTO(request)))
-        .map(
-            orderId -> {
-              final OrderIdResource result = new OrderIdResource();
-              result.setOrderId(orderId.getOrderId());
-              return ResponseEntity.ok().body(result);
-            });
+                createOrderCommandService.createOrder(DTOAssembler.toCreateOrderCommand(request)))
+        .map(orderId -> ResponseEntity.ok(DTOAssembler.toOrderIdResource(orderId)));
   }
 
   @GetMapping
@@ -45,18 +38,7 @@ public class OrderController {
     return Mono.just(
         ResponseEntity.ok(
             orderQueryService.getOrders().stream()
-                .map(
-                    order -> {
-                      final OrderResource orderResource = new OrderResource();
-                      orderResource.setOrderId(order.getOrderId().getOrderId());
-                      orderResource.setItemId(order.getItemId().getItemId());
-                      orderResource.setOrderAmount(order.getOrderAmount().asString());
-                      if (Objects.nonNull(order.getPaymentId())) {
-                        orderResource.setPaymentId(order.getPaymentId().getPaymentId());
-                      }
-                      orderResource.setQuantity(order.getQuantity().getQuantity());
-                      return orderResource;
-                    })
+                .map(DTOAssembler::toOrderResource)
                 .collect(Collectors.toList())));
   }
 }
