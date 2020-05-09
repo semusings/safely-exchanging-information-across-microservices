@@ -6,14 +6,9 @@ spring:
       bindings:
         paymentReceivedChannel: # [MessageChannel]
           contentType: 'application/*+avro'
-          destination: payment-received
+          destination: paymentReceivedChannel
         paymentRequestedChannel: # [SubscribableChannel]
           contentType: 'application/*+avro'
-      rabbit:
-        bindings:
-          paymentRequestedChannel:
-            consumer:
-              autoBindDlq: true # Enable Dead Letter Queue on [SubscribableChannel]
   datasource:
     url: jdbc:postgresql://localhost:5433/payments
     username: user
