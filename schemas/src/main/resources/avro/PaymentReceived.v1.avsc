@@ -1,5 +1,5 @@
 {
-  "name": "PaymentRequested",
+  "name": "PaymentReceivedV1",
   "type": "record",
   "namespace": "io.github.bhuwanupadhyay.schemas",
   "fields": [
@@ -8,13 +8,8 @@
       "type": "string"
     },
     {
-        "name": "orderAmount",
+        "name": "paymentId",
         "type": "string"
-    },
-    {
-      "name": "customerId",
-      "type": "string",
-      "default": ""
     }
   ]
 }

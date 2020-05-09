@@ -2,16 +2,16 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xmlns="http://maven.apache.org/POM/4.0.0"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>12-safely-exchanging-information-across-microservices</artifactId>
+		<groupId>io.github.bhuwanupadhyay</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.bhuwanupadhyay</groupId>
 	<artifactId>schemas</artifactId>
-	<version>1.0.1</version>
 
 	<properties>
-		<java.version>11</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<avro.version>1.8.2</avro.version>
 	</properties>
 

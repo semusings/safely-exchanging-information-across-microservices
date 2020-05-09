@@ -1,0 +1,20 @@
+{
+  "name": "PaymentRequestedV2",
+  "type": "record",
+  "namespace": "io.github.bhuwanupadhyay.schemas",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+        "name": "orderAmount",
+        "type": "string"
+    },
+    {
+      "name": "customerId",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}

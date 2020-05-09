@@ -2,7 +2,7 @@ package io.github.bhuwanupadhyay.order.application.internal.outboundservices;
 
 import io.github.bhuwanupadhyay.order.domain.events.PaymentRequestedEvent;
 import io.github.bhuwanupadhyay.order.infrastructure.brokers.rabbitmq.OrderEventSource;
-import io.github.bhuwanupadhyay.schemas.PaymentRequested;
+import io.github.bhuwanupadhyay.schemas.PaymentRequestedV2;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -20,8 +20,8 @@ public class OrderEventPublisherService {
   @TransactionalEventListener // Attach it to the transaction of the repository operation
   public void handlePaymentRequestedEvent(PaymentRequestedEvent paymentRequestedEvent) {
     LOG.info("Handling event [PaymentRequestedEvent].");
-    final PaymentRequested paymentRequested =
-        PaymentRequested.newBuilder()
+    final PaymentRequestedV2 paymentRequested =
+        PaymentRequestedV2.newBuilder()
             .setOrderId(paymentRequestedEvent.getOrderId().getOrderId())
             .setOrderAmount(paymentRequestedEvent.getOrderAmount().asString())
             .setCustomerId(paymentRequestedEvent.getCustomerId().getCustomerId())
@@ -29,6 +29,6 @@ public class OrderEventPublisherService {
     orderEventSource
         .paymentRequested()
         .send(MessageBuilder.withPayload(paymentRequested).build()); // Publish the event
-    LOG.info("Successfully published the event [PaymentRequestedEvent].");
+    LOG.info("Successfully published the event [PaymentRequestedV2].");
   }
 }
