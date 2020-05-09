@@ -8,7 +8,7 @@
       "type": "string"
     },
     {
-        "name": "totalAmount",
+        "name": "orderAmount",
         "type": "string"
     }
   ]

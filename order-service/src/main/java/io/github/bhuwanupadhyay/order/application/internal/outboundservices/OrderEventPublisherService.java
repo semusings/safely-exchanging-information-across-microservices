@@ -23,7 +23,7 @@ public class OrderEventPublisherService {
     final PaymentRequested paymentRequested =
         PaymentRequested.newBuilder()
             .setOrderId(paymentRequestedEvent.getOrderId().getOrderId())
-            .setTotalAmount(paymentRequestedEvent.getOrderAmount().asString())
+            .setOrderAmount(paymentRequestedEvent.getOrderAmount().asString())
             .build();
     orderEventSource
         .paymentRequested()

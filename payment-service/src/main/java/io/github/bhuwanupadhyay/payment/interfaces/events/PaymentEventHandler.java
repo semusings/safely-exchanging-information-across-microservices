@@ -25,7 +25,7 @@ public class PaymentEventHandler {
     LOG.debug("Event payload {}.", paymentRequested);
     final CreatePaymentCommand createPaymentCommand = new CreatePaymentCommand();
     createPaymentCommand.setOrderId(paymentRequested.getOrderId().toString());
-    createPaymentCommand.setOrderAmount(paymentRequested.getTotalAmount().toString());
+    createPaymentCommand.setOrderAmount(paymentRequested.getOrderAmount().toString());
     createPaymentCommandService.createPayment(createPaymentCommand);
     LOG.info("Successfully processed event [PaymentRequested].");
   }
