@@ -38,7 +38,7 @@ version: ## Get the current version
 
 registry: ## Run schema registry
 	./mvnw spring-boot:run -f schema-registry/pom.xml
-order-service: ## Run order service
+order_service: ## Run order service
 	./mvnw clean spring-boot:run -f order-service/pom.xml
-payment-service: ## Run payment service
+payment_service: ## Run payment service
 	./mvnw clean spring-boot:run -f payment-service/pom.xml
