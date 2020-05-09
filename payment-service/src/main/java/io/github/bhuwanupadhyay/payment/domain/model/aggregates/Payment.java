@@ -1,15 +1,19 @@
 package io.github.bhuwanupadhyay.payment.domain.model.aggregates;
 
+import io.github.bhuwanupadhyay.payment.domain.events.PaymentReceivedEvent;
+import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.OrderId;
 import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.PaymentId;
 import io.github.bhuwanupadhyay.payment.domain.model.valueobjects.ReceivedAmount;
-import java.util.Objects;
-import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
+import javax.persistence.*;
+import java.util.Objects;
+
 @Entity
+@Table(name = "OMS_PAYMENT")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Payment extends AbstractAggregateRoot<Payment> {
@@ -20,6 +24,7 @@ public class Payment extends AbstractAggregateRoot<Payment> {
 
   // Globally unique identifier of the Payment Root Aggregate (Payment Id)
   @Embedded private PaymentId paymentId;
+  @Embedded private OrderId orderId;
 
   @Embedded private ReceivedAmount receivedAmount;
 
@@ -38,5 +43,11 @@ public class Payment extends AbstractAggregateRoot<Payment> {
   @Override
   public int hashCode() {
     return Objects.hash(id, paymentId);
+  }
+
+  public void receivePayment(OrderId orderId, ReceivedAmount receivedAmount) {
+    this.orderId = orderId;
+    this.receivedAmount = receivedAmount;
+    this.registerEvent(new PaymentReceivedEvent(paymentId, orderId));
   }
 }

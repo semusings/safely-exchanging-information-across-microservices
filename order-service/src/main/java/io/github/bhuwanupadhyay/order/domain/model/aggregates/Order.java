@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
 @Entity
-@Table(name = "ITEM_ORDER")
+@Table(name = "OMS_ORDER")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends AbstractAggregateRoot<Order> {

@@ -1,0 +1,14 @@
+### Create New Order
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "itemId": "ITM00001",
+  "quantity": 20
+}
+
+### Get orders
+GET http://localhost:8080/orders
+
+### Get payments
+GET http://localhost:8081/payments

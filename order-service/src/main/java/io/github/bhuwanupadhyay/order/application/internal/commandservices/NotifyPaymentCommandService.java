@@ -4,7 +4,7 @@ import io.github.bhuwanupadhyay.order.domain.commands.NotifyPaymentCommand;
 import io.github.bhuwanupadhyay.order.domain.model.aggregates.Order;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.OrderId;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.PaymentId;
-import io.github.bhuwanupadhyay.order.infrastructure.repositories.jpa.OrderRepository;
+import io.github.bhuwanupadhyay.order.infrastructure.repositories.OrderRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -58,19 +58,3 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
-#  schemas_db:
-#    image: bitnami/postgresql:12
-#    ports:
-#      - 5434:5432
-#    volumes:
-#      - payments_db_data:/bitnami/postgresql
-#    environment:
-#      - POSTGRES_USER=user
-#      - POSTGRES_PASSWORD=password
-#      - POSTGRES_DB=schemas
-#    networks:
-#      - backend
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure

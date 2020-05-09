@@ -1,5 +1,0 @@
-GET http://localhost:8990/PaymentRequested/avro
-
-###
-
-GET http://localhost:8990/schemas/1

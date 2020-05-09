@@ -7,7 +7,7 @@ import io.github.bhuwanupadhyay.order.domain.model.valueobjects.ItemId;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.ItemPrice;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.OrderId;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.Quantity;
-import io.github.bhuwanupadhyay.order.infrastructure.repositories.jpa.OrderRepository;
+import io.github.bhuwanupadhyay.order.infrastructure.repositories.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

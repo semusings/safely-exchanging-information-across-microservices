@@ -1,9 +1,11 @@
-package io.github.bhuwanupadhyay.order.infrastructure.repositories.jpa;
+package io.github.bhuwanupadhyay.order.infrastructure.repositories;
 
 import io.github.bhuwanupadhyay.order.domain.model.aggregates.Order;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.OrderId;
 import java.util.Optional;
 import java.util.UUID;
+
+import io.github.bhuwanupadhyay.order.infrastructure.repositories.jpa.JpaOrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class OrderRepository {
 
-  private final SpringDataOrderRepository repository;
+  private final JpaOrderRepository repository;
 
   /**
    * Stores the Order Aggregate

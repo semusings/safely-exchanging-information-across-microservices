@@ -15,5 +15,8 @@ spring:
     url: jdbc:postgresql://localhost:5433/payments
     username: user
     password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 server:
   port: 8081
