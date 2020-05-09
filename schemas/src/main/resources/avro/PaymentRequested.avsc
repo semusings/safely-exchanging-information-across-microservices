@@ -10,6 +10,11 @@
     {
         "name": "orderAmount",
         "type": "string"
+    },
+    {
+      "name": "customerId",
+      "type": "string",
+      "default": null
     }
   ]
 }
