@@ -4,7 +4,8 @@ Content-Type: application/json
 
 {
   "itemId": "ITM00001",
-  "quantity": 20
+  "quantity": 20,
+  "customerId": "CUST00001"
 }
 
 ### Get orders

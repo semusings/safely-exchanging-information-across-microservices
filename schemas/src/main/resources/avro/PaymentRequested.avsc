@@ -14,7 +14,7 @@
     {
       "name": "customerId",
       "type": "string",
-      "default": null
+      "default": ""
     }
   ]
 }

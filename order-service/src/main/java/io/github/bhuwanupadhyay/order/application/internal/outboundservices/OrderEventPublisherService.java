@@ -24,6 +24,7 @@ public class OrderEventPublisherService {
         PaymentRequested.newBuilder()
             .setOrderId(paymentRequestedEvent.getOrderId().getOrderId())
             .setOrderAmount(paymentRequestedEvent.getOrderAmount().asString())
+            .setCustomerId(paymentRequestedEvent.getCustomerId().getCustomerId())
             .build();
     orderEventSource
         .paymentRequested()

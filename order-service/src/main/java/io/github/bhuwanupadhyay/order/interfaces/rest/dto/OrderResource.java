@@ -7,6 +7,7 @@ public class OrderResource {
 
   private String orderId;
   private String itemId;
+  private String customerId;
   private Integer quantity;
   private String paymentId;
   private String orderAmount;

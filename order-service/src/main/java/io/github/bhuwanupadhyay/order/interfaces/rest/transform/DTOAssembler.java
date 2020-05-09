@@ -12,6 +12,7 @@ public class DTOAssembler {
 
   public static CreateOrderCommand toCreateOrderCommand(CreateOrderResource createOrderResource) {
     final CreateOrderCommand result = new CreateOrderCommand();
+    result.setCustomerId(createOrderResource.getCustomerId());
     result.setItemId(createOrderResource.getItemId());
     result.setQuantity(createOrderResource.getQuantity());
     return result;
@@ -21,6 +22,7 @@ public class DTOAssembler {
     final OrderResource result = new OrderResource();
     result.setOrderId(order.getOrderId().getOrderId());
     result.setItemId(order.getItemId().getItemId());
+    result.setCustomerId(order.getCustomerId().getCustomerId());
     result.setOrderAmount(order.getOrderAmount().asString());
     if (Objects.nonNull(order.getPaymentId())) {
       result.setPaymentId(order.getPaymentId().getPaymentId());

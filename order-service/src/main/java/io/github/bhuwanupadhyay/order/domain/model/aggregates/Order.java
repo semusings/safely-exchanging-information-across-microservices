@@ -23,12 +23,13 @@ public class Order extends AbstractAggregateRoot<Order> {
   @Embedded private OrderId orderId;
 
   @Embedded private OrderAmount orderAmount;
-
+  @Embedded private CustomerId customerId;
   @Embedded private ItemId itemId;
   @Embedded private PaymentId paymentId;
   @Embedded private Quantity quantity;
 
-  public Order(OrderId orderId, ItemId itemId, Quantity quantity) {
+  public Order(OrderId orderId, ItemId itemId, CustomerId customerId, Quantity quantity) {
+    this.customerId = customerId;
     this.orderId = orderId;
     this.itemId = itemId;
     this.quantity = quantity;
@@ -51,7 +52,7 @@ public class Order extends AbstractAggregateRoot<Order> {
     final BigDecimal quantity = BigDecimal.valueOf(this.quantity.getQuantity());
     final BigDecimal amount = itemPrice.getItemPrice().multiply(quantity);
     this.orderAmount = new OrderAmount(amount, "USD");
-    this.registerEvent(new PaymentRequestedEvent(orderId, orderAmount));
+    this.registerEvent(new PaymentRequestedEvent(orderId, customerId, orderAmount));
   }
 
   public void notifyOrder(PaymentId paymentId) {
