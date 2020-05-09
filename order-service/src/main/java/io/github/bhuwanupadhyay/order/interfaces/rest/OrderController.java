@@ -1,9 +1,8 @@
 package io.github.bhuwanupadhyay.order.interfaces.rest;
 
 import io.github.bhuwanupadhyay.order.application.internal.commandservices.CreateOrderCommandService;
-import io.github.bhuwanupadhyay.order.domain.model.valueobjects.OrderId;
 import io.github.bhuwanupadhyay.order.interfaces.rest.dto.CreateOrderRequest;
-import io.github.bhuwanupadhyay.order.interfaces.rest.dto.OrderResource;
+import io.github.bhuwanupadhyay.order.interfaces.rest.dto.CreateOrderResponse;
 import io.github.bhuwanupadhyay.order.interfaces.rest.transform.CreateOrderCommandDTOAssembler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +20,18 @@ public class OrderController {
   private final CreateOrderCommandService createOrderCommandService;
 
   @PostMapping
-  public ResponseEntity<Mono<OrderResource>> createOrder(
-      CreateOrderRequest request, ServerWebExchange exchange) {
-    OrderId orderId =
-        createOrderCommandService.createOrder(
-            CreateOrderCommandDTOAssembler.toCommandFromDTO(request));
-    final OrderResource resource = new OrderResource();
-    resource.setOrderId(orderId.getOrderId());
-    return ResponseEntity.ok().body(Mono.just(resource));
+  public Mono<ResponseEntity<CreateOrderResponse>> createOrder(
+      Mono<CreateOrderRequest> createOrderRequest, ServerWebExchange exchange) {
+    return createOrderRequest
+        .map(
+            request ->
+                createOrderCommandService.createOrder(
+                    CreateOrderCommandDTOAssembler.toCommandFromDTO(request)))
+        .map(
+            orderId -> {
+              final CreateOrderResponse result = new CreateOrderResponse();
+              result.setOrderId(orderId.getOrderId());
+              return ResponseEntity.ok().body(result);
+            });
   }
 }

@@ -3,9 +3,7 @@ package io.github.bhuwanupadhyay.order.interfaces.rest.dto;
 import lombok.Data;
 
 @Data
-public class OrderResource {
+public class CreateOrderResponse {
 
   private String orderId;
-  private String itemId;
-  private String status;
 }

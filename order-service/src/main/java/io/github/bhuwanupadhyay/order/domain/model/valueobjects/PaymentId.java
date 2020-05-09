@@ -11,12 +11,12 @@ import java.util.Objects;
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class ItemId {
+public class PaymentId {
 
-  @Column(name = "ITEM_ID")
+  @Column(name = "PAYMENT_ID")
   private String itemId;
 
-  public ItemId(String itemId) {
+  public PaymentId(String itemId) {
     this.itemId = itemId;
   }
 
@@ -24,8 +24,8 @@ public class ItemId {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		ItemId itemId1 = (ItemId) o;
-		return Objects.equals(itemId, itemId1.itemId);
+		PaymentId paymentId = (PaymentId) o;
+		return Objects.equals(itemId, paymentId.itemId);
 	}
 
 	@Override

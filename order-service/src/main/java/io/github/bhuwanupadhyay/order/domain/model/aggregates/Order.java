@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+@Table(name = "ITEM_ORDER")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends AbstractAggregateRoot<Order> {
@@ -24,6 +25,7 @@ public class Order extends AbstractAggregateRoot<Order> {
   @Embedded private OrderAmount orderAmount;
 
   @Embedded private ItemId itemId;
+  @Embedded private PaymentId paymentId;
   @Embedded private Quantity quantity;
 
   public Order(OrderId orderId, ItemId itemId, Quantity quantity) {
@@ -50,5 +52,9 @@ public class Order extends AbstractAggregateRoot<Order> {
     final BigDecimal amount = itemPrice.getItemPrice().multiply(quantity);
 
     this.orderAmount = new OrderAmount(amount, "USD");
+  }
+
+  public void notifyOrder(PaymentId paymentId) {
+    this.paymentId = paymentId;
   }
 }

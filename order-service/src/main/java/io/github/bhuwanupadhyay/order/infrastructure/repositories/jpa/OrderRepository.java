@@ -2,10 +2,11 @@ package io.github.bhuwanupadhyay.order.infrastructure.repositories.jpa;
 
 import io.github.bhuwanupadhyay.order.domain.model.aggregates.Order;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.OrderId;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -32,5 +33,9 @@ public class OrderRepository {
     return new OrderId(random.substring(0, random.indexOf("-")));
   }
 
-  interface SpringDataOrderRepository extends JpaRepository<Order, Long> {}
+  public Optional<Order> findByOrderId(OrderId orderId) {
+    return repository.findFirstByOrderId(orderId);
+  }
+
+
 }
