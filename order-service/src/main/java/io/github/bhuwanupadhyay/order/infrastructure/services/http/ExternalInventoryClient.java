@@ -1,9 +1,8 @@
 package io.github.bhuwanupadhyay.order.infrastructure.services.http;
 
 import io.github.bhuwanupadhyay.order.infrastructure.services.http.dto.ItemResource;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ExternalInventoryClient {

@@ -35,3 +35,4 @@ node_modules
 docs/node
 *.xml.next
 *.xml.tag
+schemas/src/main/java

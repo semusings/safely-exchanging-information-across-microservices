@@ -2,14 +2,13 @@ package io.github.bhuwanupadhyay.order.domain.model.aggregates;
 
 import io.github.bhuwanupadhyay.order.domain.events.PaymentRequestedEvent;
 import io.github.bhuwanupadhyay.order.domain.model.valueobjects.*;
+import java.math.BigDecimal;
+import java.util.Objects;
+import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.AbstractAggregateRoot;
-
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Objects;
 
 @Entity
 @Table(name = "ITEM_ORDER")

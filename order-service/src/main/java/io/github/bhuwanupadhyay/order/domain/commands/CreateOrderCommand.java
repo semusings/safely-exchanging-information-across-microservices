@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CreateOrderCommand {
 
-	private String itemId;
-	private Integer quantity;
+  private String itemId;
+  private Integer quantity;
 }

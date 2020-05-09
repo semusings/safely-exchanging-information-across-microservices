@@ -1,13 +1,12 @@
 package io.github.bhuwanupadhyay.order.domain.model.valueobjects;
 
+import java.math.BigDecimal;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import java.math.BigDecimal;
-import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
